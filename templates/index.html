@@ -38,24 +38,25 @@
                         </div>
                     </div>
                 </div>
-                <div id="taskList" class="chart-section">
-                    {% for task, response in zip(todos, responses) %}
+                <div class="new-chart-section">
                     <div class="right-part">
-                        <p class="task">{{task}}</p>
-                        <span>Just now Not Seen Yet.</span>
+                            <ul class="right-ul">
+                                <li> hi</li>
+                            </ul>
                     </div>
                     <div class="left-part">
                         <div class="agent-chart">
-                            <img src="{{ url_for('static', filename='support-logo.png') }}" alt="">
-                            <p>{{response}}</p>
-                        </div>
+                            <img src="{{ url_for('static', filename='support-logo.png') }}">
+                            <ul class="left-ul">
+                                <li>hello</li>
+                            </ul>
+                       </div>
                     </div>
-                    {% endfor %}
                 </div>
             </div>
             <div class="bottom-section">
                 <form id="myForm">
-                    <input type="text" id="inputValue" name="inputValue" placeholder="Enter chat here" autocomplete="off" required>
+                    <input type="text" id="userInput" name="userInput" placeholder="Enter chat here" autocomplete="off" required>
                     <button type="submit" class="button"><i class='bx bxs-send'></i></button>
                 </form>
             </div>

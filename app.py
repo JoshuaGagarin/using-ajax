@@ -300,22 +300,26 @@ def botanswer(q):
 
     if prob[max_] <= 0.6: #Only 60% and above accurate
         response_list.append("Sorry, I don't have much information about your query...")
+        print("Sorry I am not getting you...!")
         return "Sorry I am not getting you...!"
     else:
         response_list.append(response_dict[rnn.classes_[max_]])
+        print(response_dict[rnn.classes_[max_]])
         return response_dict[rnn.classes_[max_]]
 
 @app.route('/')
 def home():
     return render_template('index.html',todos=chat_list, responses=response_list, zip=zip)
 
-@app.route('/add', methods=['POST'])
-def add_todo():
-    task = request.form.get('task')
-    if task:
-        chat_list.append(task)
-        botanswer(task)
-    return jsonify({'status': 'success'})
+@app.route('/submit', methods=['POST'])
+def submit():
+    user_input = request.json.get('user_input')
+    return jsonify({"status": "success", "data": [botanswer(user_input), user_input]})
+    # task = request.form.get('task')
+    # if task:
+    #     chat_list.append(task)
+    #     botanswer(task)
+    # return jsonify({'status': 'success'})
 
 if __name__ == '__main__':
     app.run(debug=True)
