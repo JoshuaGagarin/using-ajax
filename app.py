@@ -309,7 +309,7 @@ def botanswer(q):
 
 @app.route('/')
 def home():
-    return render_template('index.html',todos=chat_list, responses=response_list, zip=zip)
+    return render_template('index.html') #,todos=chat_list, responses=response_list, zip=zip
 
 @app.route('/submit', methods=['POST'])
 def submit():
